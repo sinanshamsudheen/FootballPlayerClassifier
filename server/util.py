@@ -28,7 +28,11 @@ def classify_image(image_base64_data,file_path=None):
         len_image_array=32*32*3 + 32*32
         final=combined_img.reshape(1,len_image_array).astype(float)
 
-        result.append(class_number_to_name(__model.predict(final)[0]))
+        result.append({
+            'class':class_number_to_name(__model.predict(final)[0]),
+            'class_probability':np.around(__model.predict_proba(final)*100,2).tolist()[0],
+            'class_dictionary':__class_name_to_number
+        })
     return result
     
 def load_artifacts():
@@ -76,6 +80,4 @@ def get_cropped_image_if_2_eyes(image_path,image_base64_data):
         
 if __name__=="__main__":
     load_artifacts()
-    print("Class Number to Name Mapping:", __class_number_to_name)
-
     print(classify_image(get_b64_test_image_for_messi(),None))

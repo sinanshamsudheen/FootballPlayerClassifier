@@ -10,13 +10,12 @@ async def hello():
 
 @app.post("/classify_image")
 
-async def classify_image():
-    form_data = await Request.form()
+async def classify_image(request: Request):
+    form_data = await request.form()
     image_data = form_data['image_data']
-    image_data=Request.form['image_data']
     response = JSONResponse(util.classify_image(image_data))
 
-    response.headers.add('Access-Control-Allow-Origin','*')
+    response.headers["Access-Control-Allow-Origin"] = "*"
     return response
    
 
