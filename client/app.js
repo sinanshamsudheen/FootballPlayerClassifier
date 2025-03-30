@@ -58,28 +58,33 @@ function init() {
                 $("#error").show();
                 return;
             }
-            let players = ["cristiano_ronaldo", "lionel_messi", "neymar_jr", "kylian_mbappe", "kevin_debryune"];
-            
+            let players = ["cristiano_ronaldo","de_bryune","lionel_messi","mbappe","neymar_jr" ]; 
+
             let match = null;
             let bestScore = -1;
-            for (let i=0;i<data.length;++i) {
+            for (let i = 0; i < data.length; ++i) {
                 let maxScoreForThisClass = Math.max(...data[i].class_probability);
-                if(maxScoreForThisClass>bestScore) {
+                if (maxScoreForThisClass > bestScore) {
                     match = data[i];
                     bestScore = maxScoreForThisClass;
                 }
             }
+
             if (match) {
                 $("#error").hide();
                 $("#resultHolder").show();
                 $("#divClassTable").show();
-                $("#resultHolder").html($(`[data-player="${match.class}"`).html());
+
+                // Ensure it selects based on correct class name
+                $("#resultHolder").html($(`[data-player="${match.class}"]`).html());
+            
                 let classDictionary = match.class_dictionary;
-                for(let personName in classDictionary) {
+                for (let personName in classDictionary) {
                     let index = classDictionary[personName];
-                    let proabilityScore = match.class_probability[index];
+                    let probabilityScore = match.class_probability[index];
+
                     let elementName = "#score_" + personName;
-                    $(elementName).html(proabilityScore);
+                    $(elementName).html(probabilityScore);
                 }
             }
             // dz.removeFile(file);            

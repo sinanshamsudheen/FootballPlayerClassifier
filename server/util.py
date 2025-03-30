@@ -33,6 +33,7 @@ def classify_image(image_base64_data,file_path=None):
             'class_probability':np.around(__model.predict_proba(final)*100,2).tolist()[0],
             'class_dictionary':__class_name_to_number
         })
+        # result.append(class_number_to_name(__model.predict(final)[0]))
     return result
     
 def load_artifacts():
