@@ -3,6 +3,9 @@
 ## Project Overview
 Football Player Classifier is an **end-to-end machine learning project** that identifies football players from images. This project covers the full pipeline from **data collection to deployment on AWS EC2**, integrating an **SVM-based classification model**, a **Flask backend**, and a **web frontend** for real-time image classification.
 
+## Demo
+Click here to watch the Demo Video:- [YouTube](https://youtu.be/s5gpQioIjkM)
+
 ## Key Features
 - **Automated Image Collection**: Utilized Bing Image Downloader to gather player images.
 - **Machine Learning Model**: Trained an **SVM classifier** to distinguish players like Messi, Ronaldo, Neymar, etc.
